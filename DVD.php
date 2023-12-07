@@ -141,7 +141,6 @@
         }
         ?>
     </div>
-
     <!-- Form Edit Barang -->
     <h3 style="color : white"> Form Edit Barang </h3>
     <form action="" method="post">
