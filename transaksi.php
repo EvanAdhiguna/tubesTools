@@ -5,9 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Penyewaan</title>
+    <style>
+        body {
+            background-image: url('img/background5.jpg');
+            background-size: cover;
+        }
+        .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .edit-form {
+      background: #fff;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+    }
+    </style>
 </head>
-<body>
 <body class="light">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light sticky-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Penyewaan DVD</a>
@@ -25,7 +50,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="DVD.php">Tabel Barang</a></li>
-                  <li><a class="dropdown-item" href="pegawai.php"> TabelPegawai</a></li>
+                  <li><a class="dropdown-item" href="pegawai.php"> Tabel Pegawai</a></li>
                   <li><a class="dropdown-item" href="pelanggan.php">Tabel Pelanggan</a></li>
                   <li><a class="dropdown-item" href="transaksi.php"> Tabel Transaksi</a></li>
                   <li><a class="dropdown-item" href="dt_transaksi.php">Tabel Detail Transaksi</a></li>
@@ -46,11 +71,11 @@
 
 
 <div class="container mt-3">
-    <h3> Tabel Transaksi</h3>
+    <h3 style="color: white"> Tabel Transaksi</h3>
 
     <!-- Form Tambah Transaksi -->
     <form action="" method="post">
-        <table class="table">
+        <table class="table table-bordered" style="background-color: rgba(108, 117, 125, 0.5); color: white;">
             <tr>
                 <td width="130">id_transaksi</td>
                 <td><input type="text" name="id_transaksi"></td>
@@ -73,7 +98,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Simpan" name="proses_transaksi"></td>
+                <td><input type="submit" value="Simpan" name="proses_transaksi" class="btn btn-success"></td>
             </tr>
         </table>
     </form>
@@ -101,8 +126,8 @@
     ?>
 
     <!-- Menampilkan data transaksi -->
-    <h3> Data Transaksi </h3>
-    <table class='table table-bordered'>
+    <h3 style='color: white;'> Data Transaksi </h3>
+    <table class='table table-bordered' style='background-color: rgba(108, 117, 125, 0.5); color: white;'>
         <tr>
             <th>id_transaksi</th>
             <th>id_pelanggan</th>
@@ -158,7 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['hapus_transaksi_id']))
 
 
     <!-- Form Edit Transaksi -->
-    <h3> Form Edit Transaksi </h3>
+    <h3 style="color: white;"> Form Edit Transaksi </h3>
     <form action="" method="post">
         <?php
         if (isset($_GET['edit_transaksi'])) {
@@ -166,7 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['hapus_transaksi_id']))
             $query_edit_transaksi = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE id_transaksi = $id_transaksi_edit");
             $data_edit_transaksi = mysqli_fetch_array($query_edit_transaksi);
         ?>
-        <table class="table">
+        <table class="table table-bordered" style="background-color: rgba(108, 117, 125, 0.5); color: white;">
             <tr>
                 <td width="130">id_transaksi</td>
                 <td><input type="text" name="id_transaksi_edit" value="<?php echo $data_edit_transaksi['id_transaksi']; ?>" readonly></td>
@@ -189,7 +214,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['hapus_transaksi_id']))
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Update" name="proses_edit_transaksi"></td>
+                <td><input type="submit" value="Update" name="proses_edit_transaksi" class="btn btn-success"></td>
             </tr>
         </table>
         <?php } ?>

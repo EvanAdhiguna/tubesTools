@@ -10,8 +10,28 @@
             background-image: url('img/background5.jpg');
             background-size: cover;
         }
+        .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .edit-form {
+      background: #fff;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+    }
     </style>
 </head>
+
 <body class="light">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light sticky-top">
@@ -79,6 +99,7 @@
 
     <?php
     include "koneksi.php";
+
     // Proses penambahan data pegawai
     if (isset($_POST['proses'])) {
         mysqli_query($koneksi,"INSERT INTO tb_pegawai SET
@@ -192,8 +213,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['hapus_id'])) {
         $alamat_edit = $_POST['alamat_edit'];
         $no_telp_edit = $_POST['no_telp_edit'];
 
-        // Lakukan validasi dan sanitasi input jika diperlukan
-
         $query_update = "UPDATE tb_pegawai SET
                         nama = '$nama_edit',
                         alamat = '$alamat_edit',
@@ -209,7 +228,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['hapus_id'])) {
         }
     }
     ?>
-    
+
 </div>
 </body>
 </html>
